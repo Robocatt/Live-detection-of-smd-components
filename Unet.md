@@ -55,7 +55,59 @@ We use ReLU as an activation function. So such function can activate the computa
 
 Important remark - it must be non linear in order to  to make the network learn complex patterns in the data.
 
+# Terms for neural networks 
 
+## Features
+
+In our context of images, we refer to features as our image with some filters applied to it.
+
+## Convolution
+
+Suppose we have an image and a specific kernel. Than we are applying this kernel over and over our image with a specific stride and do a convolutional type of multiplication (explained above).
+ 
+Usally kernel is used 3 * 3
+
+## MaxPooling 
+
+Picking maximum value of a specific part of image. Doing so for the hole image with a specific stride.  Usally from 2 * 2. 
+
+AveragePooling also can be used but rarely  
+
+## BatchNormalization
+
+Also can be used between layers.
+
+Normalizes all the values to a certain range.
+Can improve training speed and also allows each layer of a network to kinda learn by itself.
+
+## Flattening 
+
+Convert 2D to 1 D  
+
+## Optimizer Adam
+
+Some kind of extension to [Stochastic gradient deescent](https://en.wikipedia.org/wiki/Stochastic_gradient_descent). But is more efficient.
+
+## Epoch 
+
+As we are using big datasets we need to separate them in order to handle them.
+
+One Epoch is when an enitire dataset is passed forward and backward through the network once.  
+
+So we are dividing our number of samples into batches, pass all the batches through a network, it will require samples / batch_size iteration. That's an Epoch.
+
+But number of epoch differs from problem to problem.
+
+
+## Dropout 
+
+Randomly select n percent of neurons /  pixels and reduce their importance to 0 or disable them.
+
+
+## Loss function 
+
+Method of evaluating how good a our function models a dataset. 
+MSE as an example. But for convolutional networks it is more often to use [binary crossentropy](https://en.wikipedia.org/wiki/Cross_entropy)
 
 # UNET - U shape NET
 
@@ -77,6 +129,10 @@ Data augmentation with elastic deformations reduces the number of annotated imag
 [Uncomplicated explanation of UNET](https://towardsdatascience.com/unet-line-by-line-explanation-9b191c76baf5)
 [Another Explanation](https://www.youtube.com/watch?v=GAYJ81M58y8&ab_channel=DigitalSreeni)
 
+UNET architecture is designed for Semantic segmentation. It means that every pixel which represents the object we are looking for may or will be marked.
+
+
+
 <dl>
 <dt>contracting </dt>
 <dd>Сжимающй<dd>
@@ -85,20 +141,24 @@ Data augmentation with elastic deformations reduces the number of annotated imag
 </dl>
 
 
-"The architecture is symmetric and consists of two major parts — the left part is called contracting path, which is constituted **by the general convolutional process**; the right part is expansive path, which is constituted by **transposed 2d convolutional layers**"
+The architecture is symmetric and consists of two major parts — the left part is called contracting (encoding) path, which is constituted **by the general convolutional process**; the right part is expansive (decoding) path, which is constituted by **transposed 2d convolutional layers**"
 
 So, the process:
 1. Layer 1  
-From 1 image do a convolution, which will produce 64 another images, and do a convolution on them. We are using 3 x 3 Kernel. Than max pool all of them into 64 image with a resolution of 2 times lower 
+From 1 image do a convolution, which will produce n another images, and do a convolution on them. We are usually using 3 x 3 Kernel. Than maxpool all of them into n images with a resolution of 2 times lower.
+
+Note: When we are doing a convolution we can either add some pixels to the images to expand it's borders to get the same size of an image after applying filters to it. (Padding = same).
+Or we can do n't do it but we'll have an image with a little bit different size. 
 
 2. Repeat the process n steps 
 
-3. Upsample m images in order to get 2 times more resolution but with half of images.  
+3. Upsample m images in order to get 2 times more resolution but with half of images.
 
-
-4. While we are upscaling images on the n-th step we are also Concatinatate filters from the n-th step when we compressed them. So when double our number of "features" of images. 
+4. While we are upscaling images on the n-th step we are also **Concatinatate filters from the n-th step when we compressed them**. So we are doubling our number of "features" of images. And this information gives us an additional information so we are willing to do a semantic segmentation correctly.
 
 5. Repeat until we've got 1 image.
+
+6. In between various steps we can dropout some random number of pixels. It's usally used to prevent overfitting of our model.
 
 ### Useful links
 
