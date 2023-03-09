@@ -72,7 +72,7 @@ Data augmentation with elastic deformations reduces the number of annotated imag
 
 ## Architecture of UNET 
 
-![basic architecture](Unet_arc.png)
+![basic architecture](img/Unet_arc.png)
 
 [Uncomplicated explanation of UNET](https://towardsdatascience.com/unet-line-by-line-explanation-9b191c76baf5)
 [Another Explanation](https://www.youtube.com/watch?v=GAYJ81M58y8&ab_channel=DigitalSreeni)
