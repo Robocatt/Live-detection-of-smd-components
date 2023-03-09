@@ -59,7 +59,7 @@ Important remark - it must be non linear in order to  to make the network learn 
 
 ## Features
 
-In our context of images, we refer to features as our image with some filters applied to it.
+In our context of images, we refer to features as our image with some filters applied to it. So it may be some filters which detecs edges / textures / brightness / etc.
 
 ## Convolution
 
@@ -160,9 +160,23 @@ Or we can do n't do it but we'll have an image with a little bit different size.
 
 6. In between various steps we can dropout some random number of pixels. It's usally used to prevent overfitting of our model.
 
+
+Note: there are some known kernels for specific purposes (detecting right edges for example) but as we do not know what will help us to find and object we are trying some random kernels. It is better to set a first that kernel to normal distribution. (he_normal)
+
+# How to implement 
+
+## Functions we'll use and their meaning.
+
+1. ### [Conv2D from Keras](https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html)
+
+2. ### 
+
+
 ### Useful links
 
 
 [Original source code, trained network](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/)
 
 
+[An improved version of
+Unet based on multi-scale](https://arxiv.org/pdf/2012.10952.pdf)
