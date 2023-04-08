@@ -127,7 +127,8 @@ Data augmentation with elastic deformations reduces the number of annotated imag
 ![basic architecture](img/Unet_arc.png)
 
 [Uncomplicated explanation of UNET](https://towardsdatascience.com/unet-line-by-line-explanation-9b191c76baf5)
-[Another Explanation](https://www.youtube.com/watch?v=GAYJ81M58y8&ab_channel=DigitalSreeni)
+
+**[Another Explanation](https://www.youtube.com/watch?v=GAYJ81M58y8&ab_channel=DigitalSreeni)**
 
 UNET architecture is designed for Semantic segmentation. It means that every pixel which represents the object we are looking for may or will be marked.
 
@@ -178,5 +179,32 @@ Note: there are some known kernels for specific purposes (detecting right edges 
 [Original source code, trained network](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/)
 
 
-[An improved version of
-Unet based on multi-scale](https://arxiv.org/pdf/2012.10952.pdf)
+[Continuous U-Net:Faster, Greater and Noiseless.Cambridge.](https://arxiv.org/pdf/2302.00626.pdf)
+
+
+[An improved version of Unet based on multi-scale. China.](https://arxiv.org/pdf/2012.10952.pdf)
+
+[Live detection of smd components using YOLO](https://www.mdpi.com/2076-3417/12/11/5608)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### To Do
+
+Make git private and add Anastasia 
